@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Login Page</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            animation: gradientAnimation 10s infinite;
+        }
+        @keyframes gradientAnimation {
+            0% {
+                background: linear-gradient(45deg, #FF6B6B, #F6F686, #63E2C6);
+                background-size: 200% 200%;
+                background-position: 0% 100%;
+            }
+            100% {
+                background: linear-gradient(45deg, #FF6B6B, #F6F686, #63E2C6);
+                background-size: 200% 200%;
+                background-position: 100% 0%;
+            }
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .container.active {
+            transform: rotateY(360deg);
+        }
+
+        .form {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .toggle-btn:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Animation */
+        @keyframes rotate {
+            0% {
+                transform: rotate(0);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animation {
+            animation: rotate 5s infinite linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="toggle-btn animation">&#8594;</div>
+        <div class="form">
+            <h2>Login</h2>
+            <form action="login_process.php" method="post">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const container = document.querySelector(".container");
+        const toggleBtn = document.querySelector(".toggle-btn");
+
+        toggleBtn.addEventListener("click", () => {
+            container.classList.toggle("active");
+        });
+    </script>
+</body>
+</html>
